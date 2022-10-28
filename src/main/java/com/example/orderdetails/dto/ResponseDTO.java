@@ -4,6 +4,8 @@ import com.example.orderdetails.entity.OrderDetails;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 public class ResponseDTO {
@@ -16,6 +18,11 @@ public class ResponseDTO {
     }
 
     public ResponseDTO(String message, OrderDetails orderDetails) {
+        this.message = message;
+        this.obj = orderDetails;
+    }
+
+    public ResponseDTO(String message, List<OrderDetails> orderDetails) {
         this.message = message;
         this.obj = orderDetails;
     }

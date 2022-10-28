@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/orders")
 public class OrderController {
@@ -53,5 +55,11 @@ public class OrderController {
         service.deleteOrder(orderDTO, id);
         ResponseDTO responseDTO = new ResponseDTO("Orders is deleted:- ", "Deleted id: "+id);
         return new ResponseEntity(responseDTO, HttpStatus.GONE);
+    }
+    @GetMapping("/pendingOrders")
+    public ResponseEntity<ResponseDTO> pendingOrder() throws OrderException{
+        List<OrderDetails> orderDetails = service.getPendingOrders();
+        ResponseDTO responseDTO = new ResponseDTO("Pending orders are:- ", orderDetails);
+        return new ResponseEntity(responseDTO, HttpStatus.OK);
     }
 }

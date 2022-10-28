@@ -4,6 +4,8 @@ import com.example.orderdetails.dto.OrderDTO;
 import com.example.orderdetails.entity.OrderDetails;
 import com.example.orderdetails.exception.OrderException;
 
+import java.util.List;
+
 public interface IOrderService {
     String placeOrder(OrderDTO orderDTO) throws OrderException;
 
@@ -16,4 +18,7 @@ public interface IOrderService {
     OrderDetails updateDispatchStatus(OrderDTO orderDTO, int id) throws OrderException;
 
     void deleteOrder(OrderDTO orderDTO, int id) throws OrderException;
+
+
+    List<OrderDetails> getPendingOrders();
 }
